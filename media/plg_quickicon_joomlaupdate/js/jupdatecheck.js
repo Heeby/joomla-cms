@@ -22,7 +22,9 @@ jQuery(document).ready(function()
 					jQuery('#plg_quickicon_joomlaupdate').find('span').replaceWith(plg_quickicon_joomlaupdate_text.UPTODATE);
 				} else {
 					var updateInfo = updateInfoList.shift();
-					if (updateInfo.version != plg_quickicon_jupdatecheck_jversion) {
+					// If update doesn't match current version and either update or current version isn't a dev release
+					if (updateInfo.version != plg_quickicon_jupdatecheck_jversion
+						&& (updateInfo.version.search('dev') !=  -1 || plg_quickicon_jupdatecheck_jversion.search('dev') != -1)) {
 						var updateString = plg_quickicon_joomlaupdate_text.UPDATEFOUND.replace("%s", updateInfo.version + "");
 						jQuery('#plg_quickicon_joomlaupdate').find('span').html(updateString);
 						var updateString = plg_quickicon_joomlaupdate_text.UPDATEFOUND_MESSAGE.replace("%s", updateInfo.version + "");
