@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="3.1" client="administrator" method="upgrade">
+<extension type="module" version="3.5" client="administrator" method="upgrade">
 	<name>mod_content</name>
 	<author>Joomla! Project</author>
-	<creationDate>July 2004</creationDate>
+	<creationDate>June 2015</creationDate>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
-	<version>3.0.0</version>
+	<version>3.5.0</version>
 	<description>MOD_CONTENT_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_content">mod_content.php</filename>
@@ -16,9 +16,9 @@
 	</files>
 	<languages>
 		<language tag="en-GB">en-GB.mod_content.ini</language>
-		<language tag="en-GB">en-GB.mod_latest.sys.ini</language>
+		<language tag="en-GB">en-GB.mod_content.sys.ini</language>
 	</languages>
-	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_LATEST" />
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_CONTENT" />
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
