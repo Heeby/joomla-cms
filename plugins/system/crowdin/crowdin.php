@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Plugin
- * @subpackage  Sampledata.Blog
+ * @subpackage  System.Crowdin
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -10,60 +10,53 @@
 defined('_JEXEC') or die;
 
 /**
- * Sampledata - Blog Plugin
+ * System - Crowdin Plugin
  *
  * @since  3.5
  */
-class PlgSampledataBlog extends JPlugin
+class PlgSystemCrowdin extends JPlugin
 {
 	/**
-	 * Database object
+	 * Application object.
 	 *
-	 * @var    JDatabaseDriver
-	 * @since  3.5
-	 */
-	protected $db;
-
-	/**
-	 * Application object
-	 *
-	 * @var    JApplication
-	 * @since  3.5
+	 * @var    JApplicationCms
+	 * @since  3.3
 	 */
 	protected $app;
 
 	/**
-	 * Get an overview of the proposed sampledata.
+	 * Webhook for when a language is fully translated and approved.
+	 * Triggers rebuilding the project.
 	 *
-	 * @return  boolean	True on success.
+	 * @return  void
 	 */
-	public function onSampledataGetOverview()
+	public function onAjaxSystemTriggerBuildProject()
 	{
-		$data = new stdClass;
-		$data->name        = $this->_name;
-		$data->title       = 'Blog Sampledata';
-		$data->description = 'Sampledata which will set up a blog site.';
-		$data->icon        = 'broadcast';
-		$data->steps       = 5;
+		$secret  = $this->params->get('secret');
+		$project = $this->params->get('project');
+		$apiKey  = $this->params->get('apikey');
+		$log     = $this->params->get('log');
 
-		return $data;
-	}
-
-	/**
-	 * First step to enter the sampledata.
-	 *
-	 * @return  array or void  Will be converted into the JSON response to the module.
-	 */
-	public function onAjaxSampledataApplyStep1()
-	{
-		if ($this->app->input->get('type') != $this->_name)
+		if ($this->app->input->get('secret') != $secret)
 		{
 			return;
-		};
+		}
 
-		$response = new stdClass;
-		$response->success     = true;
-		$response->message     = JText::_('PLG_SAMPLEDATA_BLOG_STEP1');
+		if (!$project || !$apiKey)
+		{
+			return;
+		}
+
+		$jhttp    = JHttpFactory::getHttp();
+		$response = $jhttp->get('https://api.crowdin.com/api/project/' . $project . '/export?key=' . $apiKey);
+
+		$response = $response;
+		if ($log)
+		{
+			// Log the response
+			JLog::addLogger(array('text_file' => 'crowdin.php'), JLog::ALL, array('crowdin'));
+			JLog::add($response, JLog::INFO, 'crowdin');
+		}
 
 		return $response;
 	}
