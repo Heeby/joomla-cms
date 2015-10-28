@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Plugin
- * @subpackage  System.Crowdin
+ * @subpackage  Crowdin.Build
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -10,11 +10,11 @@
 defined('_JEXEC') or die;
 
 /**
- * System - Crowdin Plugin
+ * Crowdin - Build Plugin
  *
  * @since  3.5
  */
-class PlgSystemCrowdin extends JPlugin
+class PlgCrowdinBuild extends JPlugin
 {
 	/**
 	 * Application object.
@@ -30,7 +30,7 @@ class PlgSystemCrowdin extends JPlugin
 	 *
 	 * @return  void
 	 */
-	public function onAjaxSystemTriggerBuildProject()
+	public function onAjaxTriggerBuildProject()
 	{
 		$secret  = $this->params->get('secret');
 		$project = $this->params->get('project');
@@ -39,18 +39,17 @@ class PlgSystemCrowdin extends JPlugin
 
 		if ($this->app->input->get('secret') != $secret)
 		{
-			return;
+			return 'Refusing to do anything';
 		}
 
 		if (!$project || !$apiKey)
 		{
-			return;
+			return 'Either API Key or Project name is missing';
 		}
 
 		$jhttp    = JHttpFactory::getHttp();
 		$response = $jhttp->get('https://api.crowdin.com/api/project/' . $project . '/export?key=' . $apiKey);
 
-		$response = $response;
 		if ($log)
 		{
 			// Log the response

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.5" type="plugin" group="system" method="upgrade">
-	<name>plg_system_crowdin</name>
+<extension version="3.5" type="plugin" group="crowdin" method="upgrade">
+	<name>plg_crowdin_build</name>
 	<author>Joomla! Project</author>
 	<creationDate>October 2015</creationDate>
 	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
@@ -8,9 +8,9 @@
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
 	<version>3.5.0</version>
-	<description>PLG_SYSTEM_CROWDIN_XML_DESCRIPTION</description>
+	<description>PLG_CROWDIN_BUILD_XML_DESCRIPTION</description>
 	<files>
-		<filename plugin="crowdin">crowdin.php</filename>
+		<filename plugin="build">build.php</filename>
 	</files>
 	<config>
 		<fields name="params">
