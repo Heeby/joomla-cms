@@ -74,7 +74,7 @@ JHtml::_('script', 'jui/fielduser.min.js', array('version' => 'auto', 'relative'
 		<input
 			type="text" id="<?php echo $id; ?>"
 			value="<?php echo  htmlspecialchars($userName, ENT_COMPAT, 'UTF-8'); ?>"
-			placeholder="<?php echo JText::_('JLIB_FORM_SELECT_USER'); ?>"
+			placeholder="<?php echo !$readonly ? JText::_('JLIB_FORM_SELECT_USER') : ''; ?>"
 			readonly
 			class="field-user-input-name <?php echo $class ? (string) $class : ''?>"
 			<?php echo $size ? ' size="' . (int) $size . '"' : ''; ?>
