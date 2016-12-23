@@ -1092,7 +1092,7 @@ abstract class JFormField
 
 		$node = $parent->appendChild(new DOMElement('field'));
 
-		$node->setAttribute('name', $field->alias);
+		$node->setAttribute('name', $field->name);
 		$node->setAttribute('type', $field->type);
 		$node->setAttribute('default', $field->default_value);
 		$node->setAttribute('label', $field->label);

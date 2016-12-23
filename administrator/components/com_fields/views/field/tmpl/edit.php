@@ -52,6 +52,7 @@ JFactory::getDocument()->addScriptDeclaration('
 				<?php echo $this->form->renderField('type'); ?>
 				<?php echo $this->form->renderField('label'); ?>
 				<?php echo $this->form->renderField('description'); ?>
+				<?php echo $this->form->renderField('name'); ?>
 				<?php echo $this->form->renderField('required'); ?>
 				<?php echo $this->form->renderField('default_value'); ?>
 

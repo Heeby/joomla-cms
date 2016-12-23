@@ -51,16 +51,7 @@
 			size="40"
 			required="true"
 		/>
-		
-		<field
-			name="alias"
-			type="text"
-			label="JFIELD_ALIAS_LABEL"
-			description="JFIELD_ALIAS_DESC"
-			hint="JFIELD_ALIAS_PLACEHOLDER"
-			size="45"
-		/>
-	
+
 		<field
 			name="type"
 			type="type"
@@ -68,6 +59,15 @@
 			default="text"
 			description="COM_FIELDS_FIELD_TYPE_DESC"
 			required="true"
+		/>
+
+		<field
+			name="name"
+			type="text"
+			label="COM_FIELDS_FIELD_NAME_LABEL"
+			description="COM_FIELDS_FIELD_NAME_DESC"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+			size="45"
 		/>
 
 		<field

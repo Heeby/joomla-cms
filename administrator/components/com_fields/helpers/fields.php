@@ -53,7 +53,7 @@ class FieldsHelper
 	 * Should the value being prepared to be shown in an HTML context then
 	 * prepareValue must be set to true. No further escaping needs to be done.
 	 * The values of the fields can be overridden by an associative array where the keys
-	 * can be an id or an alias and it's corresponding value.
+	 * can be an id or an name and it's corresponding value.
 	 *
 	 * @param   string    $context           The context of the content passed to the helper
 	 * @param   stdClass  $item              item
@@ -121,9 +121,9 @@ class FieldsHelper
 				 */
 				$field = clone $original;
 
-				if ($valuesToOverride && key_exists($field->alias, $valuesToOverride))
+				if ($valuesToOverride && key_exists($field->name, $valuesToOverride))
 				{
-					$field->value = $valuesToOverride[$field->alias];
+					$field->value = $valuesToOverride[$field->name];
 				}
 				elseif ($valuesToOverride && key_exists($field->id, $valuesToOverride))
 				{
@@ -482,7 +482,7 @@ class FieldsHelper
 			if (!is_array($value) && $value !== '')
 			{
 				// Function getField doesn't cache the fields, so we try to do it only when necessary
-				$formField = $form->getField($field->alias, 'params');
+				$formField = $form->getField($field->name, 'params');
 
 				if ($formField && $formField->forceMultiple)
 				{
@@ -491,7 +491,7 @@ class FieldsHelper
 			}
 
 			// Setting the value on the field
-			$form->setValue($field->alias, 'params', $value);
+			$form->setValue($field->name, 'params', $value);
 		}
 
 		return true;

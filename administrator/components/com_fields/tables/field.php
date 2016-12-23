@@ -91,19 +91,28 @@ class FieldsTableField extends JTable
 			return false;
 		}
 
-		if (empty($this->alias))
+		if (empty($this->name))
 		{
-			$this->alias = $this->title;
+			$this->name = $this->title;
 		}
 
-		$this->alias = JApplicationHelper::stringURLSafe($this->alias);
+		// Sanitize the name
+		$this->name = JApplicationHelper::stringURLSafe($this->name, $this->language);
 
-		if (trim(str_replace('-', '', $this->alias)) == '')
+		if (trim(str_replace('-', '', $this->name)) == '')
 		{
-			$this->alias = Joomla\String\StringHelper::increment($this->alias, 'dash');
+			$this->name = JFactory::getDate()->format('Y-m-d-H-i-s');
 		}
 
-		$this->alias = str_replace(',', '-', $this->alias);
+		// Verify that the name is unique
+		$table = JTable::getInstance('Field', 'FieldsTable');
+
+		if ($table->load(array('name' => $this->name)) && ($table->id != $this->id || $this->id == 0))
+		{
+			$this->setError(JText::_('COM_FIELDS_ERROR_UNIQUE_ALIAS'));
+
+			return false;
+		}
 
 		if (empty($this->type))
 		{
@@ -135,7 +144,7 @@ class FieldsTableField extends JTable
 		if (empty($this->group_id))
 		{
 			$this->group_id = 0;
-		}	
+		}
 
 		return true;
 	}
