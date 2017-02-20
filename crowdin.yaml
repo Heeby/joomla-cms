@@ -1,0 +1,24 @@
+files:
+  -
+    source: '/installation/language/en-GB/en-GB.ini'
+    translation: '/installation/language/%locale%/%locale%.ini'
+    dest: 'install_en-GB/en-GB.ini'
+    type: 'joomla'
+    update_option: 'update_as_unapproved'
+  -
+    source: '/installation/language/en-GB/en-GB.xml'
+    translation: '/installation/language/%locale%/%locale%.xml'
+    dest: 'install_en-GB/en-GB.xml'
+    update_option: 'update_as_unapproved'
+  -
+    source: '/administrator/language/en-GB/en-GB.ini'
+    translation: '/administrator/language/%locale%/%locale%.ini'
+    dest: 'admin_en-GB/en-GB.ini'
+    type: 'joomla'
+    update_option: 'update_as_unapproved'
+  -
+    source: '/language/en-GB/en-GB.ini'
+    translation: '/language/%locale%/%locale%.ini'
+    dest: 'site_en-GB/en-GB.ini'
+    type: 'joomla'
+    update_option: 'update_as_unapproved'
