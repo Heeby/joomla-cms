@@ -16,4 +16,16 @@
 		<language tag="en-GB">en-GB.plg_editors-xtd_fields.ini</language>
 		<language tag="en-GB">en-GB.plg_editors-xtd_fields.sys.ini</language>
 	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/plugins/editors-xtd/fields/fields">
+				<field name="fieldlayout" type="fieldlayout"
+					default=""
+					label="PLG_EDITORS-XTD_FIELDS_FIELD_FIELDLAYOUT_LABEL"
+					description="PLG_EDITORS-XTD_FIELDS_FIELD_FIELDLAYOUT_DESC" >
+					<option value="">JOPTION_USE_DEFAULT</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
 </extension>
