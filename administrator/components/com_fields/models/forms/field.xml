@@ -287,6 +287,14 @@
 				<option value="3">COM_FIELDS_FIELD_DISPLAY_AFTER_DISPLAY</option>
 				<option value="0">COM_FIELDS_FIELD_DISPLAY_NO_DISPLAY</option>
 			</field>
+
+			<field
+				name="layout"
+				type="fieldlayout"
+				label="COM_FIELDS_FIELD_LAYOUT_LABEL"
+				description="COM_FIELDS_FIELD_LAYOUT_DESC"
+				showon="display:1,2,3"
+			/>
 		</fieldset>
 	</fields>
 </form>
