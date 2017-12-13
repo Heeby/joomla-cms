@@ -974,11 +974,18 @@ class FieldModel extends AdminModel
 		}
 
 		// Setting the context for the category field
-		$cat = \JCategories::getInstance(str_replace('com_', '', $component));
+		$cat = \JCategories::getInstance(str_replace('com_', '', $component) . '.' . $section);
+
+		// If there is no category for the component and section, so check the component only
+		if (!$cat)
+		{
+			$cat = \JCategories::getInstance(str_replace('com_', '', $component));
+		}
+
 
 		if ($cat && $cat->get('root')->hasChildren())
 		{
-			$form->setFieldAttribute('assigned_cat_ids', 'extension', $component);
+			$form->setFieldAttribute('assigned_cat_ids', 'extension', $cat->getExtension());
 		}
 		else
 		{
