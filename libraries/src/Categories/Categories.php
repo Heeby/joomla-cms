@@ -151,6 +151,11 @@ class Categories
 			}
 
 			include_once $path;
+
+			if (!class_exists($classname))
+			{
+				return false;
+			}
 		}
 
 		// Check for a possible service from the container otherwise manually instantiate the class
